@@ -23,7 +23,7 @@ body,
   object-fit: cover;
   width: 65vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }
