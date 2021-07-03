@@ -191,14 +191,18 @@ ol.top-list {
 .results-title-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .asset-code {
-  font-size: 5em;
+  font-size: 4.5em;
+  margin-bottom: 10px;
 }
 
 .asset-name {
-  font-size: 3em;
+  width: auto;
+  font-size: 1.2rem;
 }
 
 .asset-prices-container {
