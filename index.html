@@ -19,12 +19,43 @@
       content="Search for the current price of your favourite crypto and see the top 5 most expensive coins."
     />
     <meta property="og:image" content="images/preview.jpeg" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2&family=Open+Sans&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link rel="icon" href="images/favicon.ico"> -->
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
   <body>
-    <!-- your content here... -->
+    <div class="flex-container">
+      <div class="search-main">
+        <h1>Crypto Search</h1>
+        <div class="searchbar-container">
+          <div class="searchbar">
+            <input type="text" />
+          </div>
+          <button class="searchbar-submit">Search</button>
+        </div>
+        <div class="results-container">
+          <p>Display search results</p>
+        </div>
+      </div>
+      <div class="list-main">
+        <div class="list-container">
+          <h2>Top 5 Highest Cryptos</h2>
+          <ol class="top-list">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+          </ol>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
