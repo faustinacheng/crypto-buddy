@@ -140,15 +140,6 @@ button:hover {
   cursor: pointer;
 }
 
-.results-container {
-  position: relative;
-  background: rgba(44, 44, 44, 0.9);
-  box-shadow: 0px 3px 10px 2px rgba(10, 97, 25, 0.2);
-  border-radius: 24px;
-  height: 50%;
-  width: 70%;
-}
-
 .list-container {
   display: flex;
   flex-direction: column;
@@ -164,4 +155,64 @@ ol.top-list {
   align-items: center;
   justify-content: space-around;
   height: 80%;
+}
+
+.results-container {
+  position: relative;
+  background: rgba(44, 44, 44, 0.9);
+  box-shadow: 0px 3px 10px 2px rgba(10, 97, 25, 0.2);
+  border-radius: 24px;
+  height: 50%;
+  width: 70%;
+}
+
+.results-inner {
+  display: flex;
+  flex-direction: column;
+  /* background: aquamarine; */
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-icon {
+  width: 40%;
+  margin-right: 30px;
+}
+
+.results-title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.asset-code {
+  font-size: 5em;
+}
+
+.asset-name {
+  font-size: 3em;
+}
+
+.asset-prices-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.1em;
+  width: 100%;
+  line-height: 2;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.asset-prices {
+  margin: 0px 30px;
+  text-align: left;
 }
