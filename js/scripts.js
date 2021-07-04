@@ -33,23 +33,24 @@ search_button.onclick = function()
     if(DATA.length == 0){
       alert("Error: Symbol does not exist!");
     }
-    else{
-      searchSYM.textContent = DATA[0].asset_id;
+    searchSYM.textContent = DATA[0].asset_id;
       searchNAME.textContent = DATA[0].name;
       currentPrice.textContent = DATA[0].price_usd.toFixed(2).toString() + " USD";
       lastPrice.textContent = LastData.rate.toFixed(2).toString() + " USD";
       var change_data = (DATA[0].price_usd - LastData.rate)/100;
+      if (change_data < 0){
+        change.style.color = "#FF0000";
+      }
+      else{
+        change.style.color = "#00FF00";
+      }
       change.textContent = change_data.toFixed(2).toString() + "%";
       
-      for (let i = 0; i < IconData.length; i++) 
-      {
-          if (IconData[i].asset_id == search_data.value)
-          {
+      for (let i = 0; i < IconData.length; i++){
+          if (IconData[i].asset_id == search_data.value){
               cryptoImage.src = IconData[i].url;
-          }
-      }
+          }}
     resultsDisplay.style.visibility = "visible";
-    }
-  }
+    }}
   getData();
 }
