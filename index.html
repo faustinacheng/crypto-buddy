@@ -61,20 +61,21 @@
         <h1>Crypto Search</h1>
         <div class="searchbar-container">
           <div class="searchbar">
-            <input type="text" />
+            <input type="text" class="searchinput" id="search_data"/>
           </div>
-          <button class="searchbar-submit">Search</button>
+          <button class="searchbar-submit" id='button' onclick="search_crpto(this.id)">Search</button>
         </div>
         <div class="results-container">
-          <div class="results-inner">
+          <div class="results-inner" id="resultsDisplay">
             <div class="title-wrapper">
               <img
                 src="images/example_crypto_icon_128.png"
+                id = 'cryptoImage'
                 class="results-icon"
               />
               <div class="results-title-container">
-                <div class="asset-code">BTC</div>
-                <div class="asset-name">Bitcoin</div>
+                <div class="asset-code" id='id'>BTC</div>
+                <div class="asset-name" id='name'>Bitcoin</div>
               </div>
             </div>
             <div class="asset-prices-container">
@@ -83,10 +84,10 @@
                 Price 1 Day Ago:<br />
                 Percentage Change:
               </div>
-              <div class="asset-prices" style="text-align: right">
-                30,000 USD<br />
-                32,000 USD<br />
-                -10%
+              <div id="asset-prices" class="asset-prices" style="text-align: right">
+                <div id='current-price'>30,000 USD</div>
+                <div id='last-day-price'>32,000 USD</div>
+                <div id='change'>-10%</div>
               </div>
             </div>
           </div>
@@ -105,5 +106,6 @@
         </div>
       </div>
     </div>
+  <script src='js/scripts.js'></script>
   </body>
 </html>
