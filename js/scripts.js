@@ -15,12 +15,12 @@ search_button.onclick = function()
 {
   var tosearch = "https://rest.coinapi.io/v1/assets/" + search_data.value + "?apikey=" + api;
   var iconsearch = "https://rest.coinapi.io/v1/assets/icons/" + search_data.value + "?apikey=" + api;
-
+  
   async function getData() {
 
     const data = await fetch(tosearch);
     const DATA = await data.json();
-
+    
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate()- 1);
     var lastPriceSearch = "https://rest.coinapi.io/v1/exchangerate/" + search_data.value + "/USD/?time=" + yesterday.toISOString() + "&apikey=" + api;
@@ -39,17 +39,19 @@ search_button.onclick = function()
       currentPrice.textContent = DATA[0].price_usd.toFixed(2).toString() + " USD";
       lastPrice.textContent = LastData.rate.toFixed(2).toString() + " USD";
       var change_data = (DATA[0].price_usd - LastData.rate)/100;
-      change.textContent = change_data.toFixed(2).toString() + "%";
-
-      for (let i = 0; i < IconData.length; i++) 
-      {
-          if (IconData[i].asset_id == search_data.value)
-          {
-              cryptoImage.src = IconData[i].url;
-          }
+      if (change_data < 0){
+        change.style.color = "#FF0000";
       }
+      else{
+        change.style.color = "#00FF00";
+      }
+      change.textContent = change_data.toFixed(2).toString() + "%";
+      
+      for (let i = 0; i < IconData.length; i++){
+          if (IconData[i].asset_id == search_data.value){
+              cryptoImage.src = IconData[i].url;
+          }}
     resultsDisplay.style.visibility = "visible";
-    }
-  }
+    }}
   getData();
 }
