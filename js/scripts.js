@@ -9,6 +9,9 @@ var change        = document.getElementById('change');
 var cryptoImage   = document.getElementById('cryptoImage');
 var resultsDisplay= document.getElementById('resultsDisplay');
 
+var tosearch = "https://rest.coinapi.io/v1/assets/" + search_data.value + "?apikey=" + api;
+var iconsearch = "https://rest.coinapi.io/v1/assets/icons/" + search_data.value + "?apikey=" + api;
+
 resultsDisplay.style.visibility = "hidden";
 
 search_button.onclick = function()
@@ -33,7 +36,8 @@ search_button.onclick = function()
     if(DATA.length == 0){
       alert("Error: Symbol does not exist!");
     }
-    searchSYM.textContent = DATA[0].asset_id;
+    else{
+      searchSYM.textContent = DATA[0].asset_id;
       searchNAME.textContent = DATA[0].name;
       currentPrice.textContent = DATA[0].price_usd.toFixed(2).toString() + " USD";
       lastPrice.textContent = LastData.rate.toFixed(2).toString() + " USD";
