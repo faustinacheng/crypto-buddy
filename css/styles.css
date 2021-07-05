@@ -169,7 +169,6 @@ ol.top-list {
 .results-inner {
   display: flex;
   flex-direction: column;
-  /* background: aquamarine; */
   align-items: center;
   justify-content: center;
   height: 100%;

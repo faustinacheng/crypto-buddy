@@ -13,7 +13,10 @@
 
     <meta property="og:title" content="Crypto Search" />
     <meta property="og:type" content="website" />
-    <!-- <meta property="og:url" content="https://faustinacheng.github.io/crypto-values/"> -->
+    <meta
+      property="og:url"
+      content="https://faustinacheng.github.io/crypto-values/"
+    />
     <meta
       property="og:description"
       content="Search for the current price of your favourite crypto and see the top 5 most expensive coins."
@@ -22,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2&family=Open+Sans&family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Exo+2&family=Open+Sans&display=swap"
       rel="stylesheet"
     />
     <link
@@ -51,6 +54,7 @@
     <div class="flex-container">
       <div class="search-main">
         <video
+          playsinline
           autoplay
           muted
           loop
@@ -61,21 +65,34 @@
         <h1>Crypto Search</h1>
         <div class="searchbar-container">
           <div class="searchbar">
-            <input type="text" class="searchinput" id="search_data"/>
+            <input
+              type="text"
+              class="searchinput"
+              id="search_data"
+              name="search_data"
+              placeholder="Enter symbol (ie. BTC for Bitcoin)"
+              autofocus
+            />
           </div>
-          <button class="searchbar-submit" id='button' onclick="search_crpto(this.id)">Search</button>
+          <button
+            class="searchbar-submit"
+            id="button"
+            onclick="search_crpto(this.id)"
+          >
+            Search
+          </button>
         </div>
         <div class="results-container">
           <div class="results-inner" id="resultsDisplay">
             <div class="title-wrapper">
               <img
                 src="images/example_crypto_icon_128.png"
-                id = 'cryptoImage'
+                id="cryptoImage"
                 class="results-icon"
               />
               <div class="results-title-container">
-                <div class="asset-code" id='id'>BTC</div>
-                <div class="asset-name" id='name'>Bitcoin</div>
+                <div class="asset-code" id="id">BTC</div>
+                <div class="asset-name" id="name">Bitcoin</div>
               </div>
             </div>
             <div class="asset-prices-container">
@@ -84,10 +101,14 @@
                 Price 1 Day Ago:<br />
                 Percentage Change:
               </div>
-              <div id="asset-prices" class="asset-prices" style="text-align: right">
-                <div id='current-price'>30,000 USD</div>
-                <div id='last-day-price'>32,000 USD</div>
-                <div id='change'>-10%</div>
+              <div
+                id="asset-prices"
+                class="asset-prices"
+                style="text-align: right"
+              >
+                <div id="current-price">30,000 USD</div>
+                <div id="last-day-price">32,000 USD</div>
+                <div id="change">-10%</div>
               </div>
             </div>
           </div>
@@ -106,6 +127,6 @@
         </div>
       </div>
     </div>
-  <script src='js/scripts.js'></script>
+    <script src="js/scripts.js"></script>
   </body>
 </html>
