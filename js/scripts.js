@@ -83,8 +83,6 @@ search_button.onclick = function () {
     const icondata = await fetch(iconsearch);
     const IconData = await icondata.json();
 
-    console.log(IconData[1].url);
-
     if (DATA.length == 0) {
       alert("Error: Symbol does not exist!");
     } else {
@@ -107,6 +105,7 @@ search_button.onclick = function () {
       for (let i = 0; i < IconData.length; i++) {
         if (IconData[i].asset_id == search_data.value) {
           cryptoImage.src = IconData[i].url;
+          break;
         } else {
           cryptoImage.src =
             "https://upload.wikimedia.org/wikipedia/commons/b/b4/Circle_question_mark.png";
