@@ -1,5 +1,5 @@
-// var api = "86BD34C5-A59B-4D68-B6C1-CECC1275E7A3";
-var api = "52FE8C2C-9ACD-44BC-BE63-F362B9AF4B17";
+var api = "86BD34C5-A59B-4D68-B6C1-CECC1275E7A3";
+// var api = "52FE8C2C-9ACD-44BC-BE63-F362B9AF4B17";
 var search_button = document.getElementById("button");
 var search_data = document.getElementById("search_data");
 var searchSYM = document.getElementById("id");
@@ -14,44 +14,28 @@ resultsDisplay.style.visibility = "hidden";
 
 // Code for Top 5
 
-// var l1 = document.getElementById("l1");
-// var l2 = document.getElementById("l2");
-// var l3 = document.getElementById("l3");
-// var l4 = document.getElementById("l4");
-// var l5 = document.getElementById("l5");
+var list = [document.getElementById("l1"), document.getElementById("l2"), document.getElementById("l3"), document.getElementById("l4"), document.getElementById("l5")];
 
-// async function calc_change(symbol) {
-//   var search = "https://rest.coinapi.io/v1/assets/" + symbol + "?apikey=" + api;
+async function calc_change(name){
+  const data = await fetch("https://api.coincap.io/v2/assets/"+name);
+  const DATA = await data.json();
 
-//   var yesterday = new Date();
-//   yesterday.setDate(yesterday.getDate() - 1);
-//   var lastPriceSearch =
-//     "https://rest.coinapi.io/v1/exchangerate/" +
-//     symbol +
-//     "/USD/?time=" +
-//     yesterday.toISOString() +
-//     "&apikey=" +
-//     api;
+  var SYM = DATA.data.symbol;
+  var USD = DATA.data.priceUsd;
+  var PER = DATA.data.changePercent24Hr;
+  var res = [SYM.toString(), USD, PER];
+  return res;
+};
 
-//   const data = await fetch(search);
-//   const DATA = await data.json();
-//   const lastdata = await fetch(lastPriceSearch);
-//   const LastData = await lastdata.json();
-//   var change_data = (DATA[0].price_usd - LastData.rate) / 100;
-// console.log(change_data);
+async function top5(){
+  var res = [calc_change("bitcoin"), calc_change("ethereum"), calc_change("dogecoin"), calc_change("tether"), calc_change("binance-coin")];
+  for(let i=0; i<5 ; i++){
+    res[i].then(
+      function(value){
+        list[i].textContent = value[0] + " : " + parseFloat(value[1]).toFixed(2).toString() + "$ : " + parseFloat(value[2]).toFixed(2).toString() + "%";
+      });}};
 
-//   return symbol + ": " + change_data.toFixed(2).toString() + "%";
-// }
-
-// async function top5() {
-//   l1.textContent = calc_change("BTC");
-//   l2.textContent = calc_change("ETH");
-//   l3.textContent = calc_change("DOGE");
-//   l4.textContent = calc_change("ADA");
-//   l5.textContent = calc_change("DOT");
-// }
-
-// top5();
+setInterval(top5, 1000);
 
 // Code for Search Crypto
 
@@ -101,13 +85,11 @@ search_button.onclick = function () {
         ((DATA[0].price_usd - LastData.rate) / LastData.rate) * 100;
       if (change_data < 0) {
         change.style.color = "#FF0000";
-        sign = "-";
       } else {
         change.style.color = "#00FF00";
-        sign = "+";
       }
       change.textContent =
-        sign + Math.abs(change_data).toFixed(2).toString() + "%";
+        change_data.toFixed(2).toString() + "%";
 
       for (let i = 0; i < IconData.length; i++) {
         if (IconData[i].asset_id == search_data.value) {
