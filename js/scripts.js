@@ -91,7 +91,8 @@ search_button.onclick = function () {
       currentPrice.textContent =
         DATA[0].price_usd.toFixed(2).toString() + " USD";
       lastPrice.textContent = LastData.rate.toFixed(2).toString() + " USD";
-      var change_data = (DATA[0].price_usd - LastData.rate) / 100;
+      var change_data =
+        ((DATA[0].price_usd - LastData.rate) / LastData.rate) * 100;
       if (change_data < 0) {
         change.style.color = "#FF0000";
         sign = "-";
