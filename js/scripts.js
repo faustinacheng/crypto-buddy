@@ -55,6 +55,12 @@ resultsDisplay.style.visibility = "hidden";
 
 // Code for Search Crypto
 
+document.querySelector("#search_data").addEventListener("keyup", (event) => {
+  if (event.key !== "Enter") return;
+  document.querySelector("#button").click();
+  event.preventDefault();
+});
+
 search_button.onclick = function () {
   var tosearch =
     "https://rest.coinapi.io/v1/assets/" + search_data.value + "?apikey=" + api;
