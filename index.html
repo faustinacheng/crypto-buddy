@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Crypto Search</title>
+    <title>Crypto Buddy</title>
     <meta
       name="description"
-      content="Search for the current price of your favourite crypto and see the top 5 most expensive coins."
+      content="A companion for all your crypto needs. Search for any coin and see what's trending!"
     />
 
-    <meta property="og:title" content="Crypto Search" />
+    <meta property="og:title" content="Crypto Buddy" />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -19,13 +19,13 @@
     />
     <meta
       property="og:description"
-      content="Search for the current price of your favourite crypto and see the top 5 most expensive coins."
+      content="A companion for all your crypto needs. Search for any coin and see what's trending!"
     />
     <meta property="og:image" content="images/preview.jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2&family=Open+Sans&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Exo+2&family=Roboto&family=Open+Sans&display=swap"
       rel="stylesheet"
     />
     <link
@@ -62,7 +62,7 @@
           src="images/bills-background.mov"
         ></video>
         <div class="background-gradient"></div>
-        <h1>Crypto Search</h1>
+        <h1>Crypto Buddy</h1>
         <div class="searchbar-container">
           <div class="searchbar">
             <input
@@ -86,18 +86,14 @@
         <div class="results-container">
           <div class="results-inner" id="resultsDisplay">
             <div class="title-wrapper">
-              <img
-                src="images/example_crypto_icon_128.png"
-                id="cryptoImage"
-                class="results-icon"
-              />
+              <img src="" id="cryptoImage" class="results-icon" />
               <div class="results-title-container">
-                <div class="asset-code" id="id">BTC</div>
-                <div class="asset-name" id="name">Bitcoin</div>
+                <div class="asset-code" id="id"></div>
+                <div class="asset-name" id="name"></div>
               </div>
             </div>
             <div class="asset-prices-container">
-              <div class="asset-prices">
+              <div class="asset-prices" id="price-labels">
                 Current Price:<br />
                 Price 1 Day Ago:<br />
                 Percentage Change:
@@ -107,9 +103,9 @@
                 class="asset-prices"
                 style="text-align: right"
               >
-                <div id="current-price">30,000 USD</div>
-                <div id="last-day-price">32,000 USD</div>
-                <div id="change">-10%</div>
+                <div id="current-price"></div>
+                <div id="last-day-price"></div>
+                <div id="change"></div>
               </div>
             </div>
           </div>
@@ -117,13 +113,14 @@
       </div>
       <div class="list-main">
         <div class="list-container">
-          <h2>Top 5 Cryptocurrency</h2>
-          <ol class="top-list">
-            <li id="l1">--</li>
-            <li id="l2">--</li>
-            <li id="l3">--</li>
-            <li id="l4">--</li>
-            <li id="l5">--</li>
+          <h2>Trending:</h2>
+          <ol class="top-list" id="trending-coins">
+            <div class="list-title">
+              <div class="title-coin">Coin</div>
+              <div class="title-price">Price(USD)</div>
+              <div class="title-24hr">24hr Change</div>
+              <div class="title-7d">7d Change</div>
+            </div>
           </ol>
         </div>
       </div>
