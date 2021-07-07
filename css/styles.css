@@ -262,7 +262,7 @@ ol.top-list {
 
 /* .list-row {
   /* margin: 0px 2%; */
-/* } */ */
+/* } */
 
 .list-rank {
   margin: 0% 1.5% 0% 0%;
@@ -273,7 +273,7 @@ ol.top-list {
   width: 3%;
   border: 3px solid grey;
   border-radius: 50px;
-  margin: 1% 1.5% 1% 0%;
+  margin: 1% 1.5% 1.5% 0%;
 }
 
 .list-name {

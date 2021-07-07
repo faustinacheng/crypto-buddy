@@ -65,21 +65,35 @@ async function get_trending() {
       }</div><img class="list-row list-icon" src=${image}/><div class="list-row list-symbol">${symbol}</div><div class="list-row list-name">${name}</div><div class="list-row list-price">${price}</div><div class="list-row change-24hr">${
         change24hr + "%"
       }</div><div class="list-row change-7d">${change7d + "%"}</div>`;
-      var someList = document.getElementById("trending-coins").getElementsByTagName("li");
-      if(parseFloat(someList[i].getElementsByClassName("list-row change-24hr")[0].innerText) < 0){
-        someList[i].getElementsByClassName("list-row change-24hr")[0].style.color = "#f23a3a";
-        someList[i].getElementsByClassName("list-row change-7d")[0].style.color = "#f23a3a";
-      }
-      else{
-        var temp = someList[i].getElementsByClassName("list-row change-24hr")[0].innerText;
-        someList[i].getElementsByClassName("list-row change-24hr")[0].innerText = "+" + temp;
-        someList[i].getElementsByClassName("list-row change-24hr")[0].style.color = "#1bb544";
+    var someList = document
+      .getElementById("trending-coins")
+      .getElementsByTagName("li");
+    if (
+      parseFloat(
+        someList[i].getElementsByClassName("list-row change-24hr")[0].innerText
+      ) < 0
+    ) {
+      someList[i].getElementsByClassName(
+        "list-row change-24hr"
+      )[0].style.color = "#f23a3a";
+      someList[i].getElementsByClassName("list-row change-7d")[0].style.color =
+        "#f23a3a";
+    } else {
+      var temp = someList[i].getElementsByClassName("list-row change-24hr")[0]
+        .innerText;
+      someList[i].getElementsByClassName("list-row change-24hr")[0].innerText =
+        "+" + temp;
+      someList[i].getElementsByClassName(
+        "list-row change-24hr"
+      )[0].style.color = "#1bb544";
 
-        var temp = someList[i].getElementsByClassName("list-row change-7d")[0].innerText;
-        someList[i].getElementsByClassName("list-row change-7d")[0].innerText = "+" + temp;
-        someList[i].getElementsByClassName("list-row change-7d")[0].style.color = "#1bb544";
-      }
-    
+      var temp =
+        someList[i].getElementsByClassName("list-row change-7d")[0].innerText;
+      someList[i].getElementsByClassName("list-row change-7d")[0].innerText =
+        "+" + temp;
+      someList[i].getElementsByClassName("list-row change-7d")[0].style.color =
+        "#1bb544";
+    }
   }
 }
 
