@@ -29,6 +29,11 @@
       rel="stylesheet"
     />
     <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="images/apple-touch-icon.png"
@@ -62,7 +67,16 @@
           src="images/bills-background.mov"
         ></video>
         <div class="background-gradient"></div>
-        <h1>Crypto Buddy</h1>
+        <h1>
+          <lord-icon
+            src="https://cdn.lordicon.com//vaeagfzc.json"
+            trigger="loop-on-hover"
+            colors="primary:#109121,secondary:#30e849"
+            style="width: 100px; height: 100px"
+          >
+          </lord-icon
+          >Crypto Buddy
+        </h1>
         <div class="searchbar-container">
           <div class="searchbar">
             <input
@@ -70,7 +84,7 @@
               class="searchinput"
               id="search_data"
               name="search_data"
-              placeholder="Enter symbol (ie. BTC for Bitcoin)"
+              placeholder="Enter name or symbol"
               autofocus
             />
           </div>
@@ -94,9 +108,13 @@
             </div>
             <div class="asset-prices-container">
               <div class="asset-prices" id="price-labels">
-                Current Price:<br />
-                Price 1 Day Ago:<br />
-                Percentage Change:
+                Current Price (USD):<br />
+                1h Price Change: <br />
+                24hr Price Change:<br />
+                7d Price Change:<br />
+                24hr High/Low (USD):<br />
+                Market Cap:<br />
+                Market Cap 24hr Change:<br />
               </div>
               <div
                 id="asset-prices"
@@ -104,8 +122,12 @@
                 style="text-align: right"
               >
                 <div id="current-price"></div>
-                <div id="last-day-price"></div>
-                <div id="change"></div>
+                <div id="price-1h"></div>
+                <div id="price-24hr"></div>
+                <div id="price-7d"></div>
+                <div id="high-24hr"></div>
+                <div id="market-cap"></div>
+                <div id="market-cap-24hr"></div>
               </div>
             </div>
           </div>
@@ -121,10 +143,18 @@
               <div class="title-24hr">24hr Change</div>
               <div class="title-7d">7d Change</div>
             </div>
+            <li class="list-item"></li>
+            <li class="list-item"></li>
+            <li class="list-item"></li>
+            <li class="list-item"></li>
+            <li class="list-item"></li>
+            <li class="list-item"></li>
+            <li class="list-item"></li>
           </ol>
         </div>
       </div>
     </div>
+    <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>

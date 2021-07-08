@@ -70,6 +70,11 @@ body,
   align-items: flex-end;
 }
 
+lord-icon {
+  margin-left: -3%;
+  padding: 0px;
+}
+
 h1 {
   position: relative;
   color: rgb(54, 212, 54);
@@ -127,11 +132,18 @@ input {
   caret-color: rgb(54, 212, 54);
   color: rgb(54, 212, 54);
   width: 90%;
-  height: 34px;
+  height: 2em;
   border: none;
   font-size: 16px;
-  height: 34px;
-  line-height: 34px;
+  line-height: 2em;
+  vertical-align: middle;
+  font-family: "Exo 2";
+}
+
+input::-webkit-input-placeholder {
+  line-height: 2em;
+  height: 2em;
+  font-size: 16px;
 }
 
 input:focus-visible {
@@ -205,44 +217,51 @@ ol.top-list {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .results-icon {
-  max-width: 30%;
+  max-width: 25%;
   height: auto;
-  margin-right: 30px;
+  margin-right: 5%;
 }
 
 .results-title-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .asset-code {
-  font-size: 4.5em;
-  margin-bottom: 10px;
+  font-size: 4em;
+  margin-bottom: 0%;
 }
 
 .asset-name {
   width: auto;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 .asset-prices-container {
   display: flex;
   flex-direction: row;
-  font-size: 1.1em;
-  width: 100%;
+  font-size: 1em;
+  width: 90%;
   line-height: 2;
   align-items: center;
-  justify-content: center;
-  margin-top: 30px;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+#current-price {
+  font-size: 1.7em;
+  margin-top: -7%;
+  margin-bottom: -8%;
 }
 
 .asset-prices {
-  margin: 0px 30px;
+  margin: 0px 0px;
   text-align: left;
 }
 
@@ -304,6 +323,7 @@ ol.top-list {
   width: 12%;
   text-align: start;
   font-size: 85%;
+  min-width: fit-content;
 }
 
 .change-7d {
@@ -311,6 +331,7 @@ ol.top-list {
   text-align: start;
   font-size: 85%;
   width: 11%;
+  min-width: fit-content;
 }
 
 .list-title {
@@ -340,4 +361,8 @@ ol.top-list {
 
 .title-7d {
   width: 11%;
+}
+
+.material-icons {
+  margin: 0% -2% 0% 0%;
 }
