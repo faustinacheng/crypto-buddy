@@ -42,6 +42,7 @@ body,
   flex-direction: column;
   background: #000;
   width: 50%;
+  min-width: 620px;
   height: 100%;
   color: #fff;
   align-items: center;
