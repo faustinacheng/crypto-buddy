@@ -49,7 +49,9 @@ async function get_trending() {
       name = ListData[0].name;
       symbol = ListData[0].symbol;
       let image = ListData[0].image;
-      let price = ListData[0].current_price;
+      let price = ListData[0].current_price.toLocaleString("en-US", {
+        maximumSignificantDigits: 10,
+      });
       let change24hr = ListData[0].price_change_percentage_24h_in_currency;
       let change7d = ListData[0].price_change_percentage_7d_in_currency;
 
