@@ -200,8 +200,9 @@ ol.top-list {
   background: rgba(44, 44, 44, 0.9);
   box-shadow: 0px 3px 10px 2px rgba(10, 97, 25, 0.2);
   border-radius: 24px;
-  height: 50%;
+  height: 45%;
   width: 70%;
+  padding: 3% 0%;
 }
 
 .results-inner {
@@ -219,6 +220,7 @@ ol.top-list {
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-bottom: 4%;
 }
 
 .results-icon {
@@ -234,6 +236,17 @@ ol.top-list {
   justify-content: center;
 }
 
+.asset-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  /* border: 1px solid white; */
+  height: 13%;
+  margin-top: 0.7%;
+}
+
 .asset-code {
   font-size: 4em;
   margin-bottom: 0%;
@@ -245,25 +258,15 @@ ol.top-list {
 }
 
 .asset-prices-container {
-  display: flex;
-  flex-direction: row;
   font-size: 1em;
   width: 90%;
-  line-height: 2;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 25px;
+  margin-top: 0%;
+  height: 60%;
 }
 
 #current-price {
   font-size: 1.7em;
-  margin-top: -7%;
-  margin-bottom: -8%;
-}
-
-.asset-prices {
-  margin: 0px 0px;
-  text-align: left;
+  margin-bottom: -1%;
 }
 
 .list-item {
@@ -366,4 +369,14 @@ ol.top-list {
 
 .material-icons {
   margin: 0% -2% 0% 0%;
+}
+
+.search-error {
+  position: absolute;
+  top: 68%;
+}
+
+lottie-player {
+  position: absolute;
+  top: 8%;
 }

@@ -15,7 +15,7 @@ let resultsDisplay = document.getElementById("resultsDisplay");
 
 let numberFormat = new Intl.NumberFormat("en-US");
 
-resultsDisplay.style.visibility = "hidden";
+// resultsDisplay.style.visibility = "hidden";
 
 // Code for Trending
 
@@ -101,6 +101,12 @@ search_button.onclick = function () {
       );
     });
 
+    console.log(search_result);
+
+    if (search_result == undefined) {
+      displaySearchError();
+    }
+
     let tosearch =
       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" +
       search_result.id +
@@ -110,34 +116,79 @@ search_button.onclick = function () {
     const DATA = await data.json();
 
     if (DATA.length == 0) {
-      alert("Error: Symbol does not exist!");
+      displaySearchError();
     } else {
-      cryptoImage.src = DATA[0].image
+      let imageSrc = DATA[0].image
         ? DATA[0].image
         : "https://upload.wikimedia.org/wikipedia/commons/b/b4/Circle_question_mark.png";
-      searchSYM.textContent = DATA[0].symbol.toUpperCase();
-      searchNAME.textContent = DATA[0].name;
-      currentPrice.textContent = DATA[0].current_price.toLocaleString("en-US", {
+      let symbol = DATA[0].symbol.toUpperCase();
+      let name = DATA[0].name;
+      let price = DATA[0].current_price.toLocaleString("en-US", {
         maximumSignificantDigits: 21,
       });
-      marketCap.textContent = DATA[0].market_cap.toLocaleString("en-US", {
+      let marketCap = DATA[0].market_cap.toLocaleString("en-US", {
         maximumSignificantDigits: 21,
       });
-      marketCap24hr.textContent = DATA[0].market_cap_change_percentage_24h;
-      stylePosNeg(marketCap24hr);
-      high24hr.textContent = `${DATA[0].high_24h.toLocaleString("en-US", {
+      let marketCap24h = DATA[0].market_cap_change_percentage_24h;
+      let highLow = `${DATA[0].high_24h.toLocaleString("en-US", {
         maximumSignificantDigits: 8,
       })} / ${DATA[0].low_24h.toLocaleString("en-US", {
         maximumSignificantDigits: 8,
       })}`;
-      price24hr.textContent = DATA[0].price_change_percentage_24h_in_currency;
-      stylePosNeg(price24hr);
-      price7d.textContent = DATA[0].price_change_percentage_7d_in_currency;
-      stylePosNeg(price7d);
-      price1h.textContent = DATA[0].price_change_percentage_1h_in_currency;
-      stylePosNeg(price1h);
+      let priceChange24hr = DATA[0].price_change_percentage_24h_in_currency;
+      let priceChange7d = DATA[0].price_change_percentage_7d_in_currency;
+      let priceChange1h = DATA[0].price_change_percentage_1h_in_currency;
 
-      resultsDisplay.style.visibility = "visible";
+      resultsDisplay.innerHTML = `<div class="title-wrapper">
+      <img src=${imageSrc} id="cryptoImage" class="results-icon" />
+      <div class="results-title-container">
+        <div class="asset-code" id="id">${symbol}</div>
+        <div class="asset-name" id="name">${name}</div>
+      </div>
+      </div>
+      <div class="asset-prices-container">
+      <div class="asset-row">
+        <div class="asset-title asset-price">Current Price (USD):</div>
+        <div class="asset-value" id="current-price">${price}</div>
+      </div>
+      <div class="asset-row">
+        <div class="asset-title asset-1hr-price">1h Price Change:</div>
+        <div class="asset-value" id="price-1h">${priceChange1h}</div>
+      </div>
+      <div class="asset-row">
+        <div class="asset-title asset-24hr-price">
+          24hr Price Change:
+        </div>
+        <div class="asset-value" id="price-24hr">${priceChange24hr}</div>
+      </div>
+      <div class="asset-row">
+        <div class="asset-title asset-7d-price">7d Price Change:</div>
+        <div class="asset-value" id="price-7d">${priceChange7d}</div>
+      </div>
+      <div class="asset-row">
+        <div class="asset-title asset-highlow-24hr">
+          24hr High/Low (USD):
+        </div>
+        <div class="asset-value" id="high-24hr">${highLow}</div>
+      </div>
+      <div class="asset-row">
+        <div class="asset-title asset-market-cap">Market Cap:</div>
+        <div class="asset-value" id="market-cap">${marketCap}</div>
+      </div>
+      <div class="asset-row">
+        <div class="asset-title asset-market-cap-change">
+          Market Cap 24hr Change:
+        </div>
+        <div class="asset-value" id="market-cap-24hr">${marketCap24h}</div>
+      </div>
+      </div>`;
+
+      stylePosNeg(document.querySelector("#market-cap-24hr"));
+      stylePosNeg(document.querySelector("#price-24hr"));
+      stylePosNeg(document.querySelector("#price-7d"));
+      stylePosNeg(document.querySelector("#price-1h"));
+
+      // resultsDisplay.style.visibility = "visible";
     }
   }
   getData();
@@ -153,4 +204,10 @@ function stylePosNeg(element) {
   }
   element.innerHTML =
     caret + Math.abs(element.textContent).toFixed(2).toString() + "%";
+}
+
+function displaySearchError() {
+  resultsDisplay.innerHTML = `<lottie-player src="images/not_found_face.json" background="transparent"  speed="1"  style="width: 82%; height: 82%;" loop autoplay></lottie-player>
+  <div class="search-error">No results found.</div>
+  `;
 }
