@@ -586,8 +586,8 @@ ol.top-list {
 
   .change-24hr {
     margin: 0% 1% 0% 0%;
-    width: 4.1rem;
-    min-width: 4.1rem;
+    width: 4.3rem;
+    min-width: 4.3rem;
     text-align: start;
     font-size: 85%;
   }
@@ -596,8 +596,8 @@ ol.top-list {
     margin: 0% 0% 0% 0%;
     text-align: start;
     font-size: 85%;
-    width: 4.1rem;
-    min-width: 4.1rem;
+    width: 4.3rem;
+    min-width: 4.3rem;
   }
 
   .list-title {
@@ -623,14 +623,14 @@ ol.top-list {
 
   .title-24hr {
     margin: 0% 1% 0% 0%;
-    width: 4.1rem;
-    min-width: 4.1rem;
+    width: 4.3rem;
+    min-width: 4.3rem;
     text-align: end;
   }
 
   .title-7d {
-    width: 4.1rem;
-    min-width: 4.1rem;
+    width: 4.3rem;
+    min-width: 4.3rem;
     text-align: center;
   }
 }
