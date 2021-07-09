@@ -42,7 +42,7 @@ body,
 
 .search-main {
   display: flex;
-  position: relative;
+  /* position: relative; */
   flex-direction: column;
   background: #000;
   width: 50%;
@@ -99,6 +99,29 @@ h2 {
   align-self: flex-start;
   margin: 8% 0% 5% 4%;
   z-index: 1;
+}
+
+#landing-image {
+  opacity: 0;
+}
+
+.a {
+  color: rgb(120, 120, 120);
+}
+
+#gorilla-container {
+  position: fixed;
+  /* overflow: hidden; */
+  width: 30%;
+  z-index: 2400;
+  left: 12%;
+  top: 42% !important;
+  opacity: 0.7;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .searchbar-container {

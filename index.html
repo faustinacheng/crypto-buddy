@@ -98,15 +98,68 @@
         </div>
         <div class="results-container">
           <div class="results-inner" id="resultsDisplay">
-            <lottie-player
-              id="landing_image"
-              src="images/gorilla_rocket.json"
-              background="transparent"
-              speed="1"
-              style="width: 90%; height: 90%"
-              loop
-              autoplay
-            ></lottie-player>
+            <div id="gorilla-container">
+              <lottie-player
+                id="landing_image"
+                src="images/gorilla_rocket.json"
+                background="transparent"
+                speed="1"
+                style="width: 90%; height: 90%"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
+            <div class="title-wrapper">
+              <img
+                src="images/cryptobuddycoin.png"
+                id="landing-image"
+                class="results-icon"
+              />
+              <div class="results-title-container">
+                <div class="asset-code" id="a id"></div>
+                <div class="asset-name" id="a name"></div>
+              </div>
+            </div>
+            <div class="asset-prices-container">
+              <div class="asset-row">
+                <div class="a asset-title asset-price">
+                  Current Price (USD):
+                </div>
+                <div class="a asset-value" id="current-price">--</div>
+              </div>
+              <div class="asset-row">
+                <div class="a asset-title asset-1hr-price">
+                  1h Price Change:
+                </div>
+                <div class="a asset-value" id="price-1h">--</div>
+              </div>
+              <div class="asset-row">
+                <div class="a asset-title asset-24hr-price">
+                  24hr Price Change:
+                </div>
+                <div class="a asset-value" id="price-24hr">--</div>
+              </div>
+              <div class="asset-row">
+                <div class="a asset-title asset-7d-price">7d Price Change:</div>
+                <div class="a asset-value" id="price-7d">--</div>
+              </div>
+              <div class="asset-row">
+                <div class="a asset-title asset-highlow-24hr">
+                  24hr High/Low (USD):
+                </div>
+                <div class="a asset-value" id="high-24hr">--</div>
+              </div>
+              <div class="asset-row">
+                <div class="a asset-title asset-market-cap">Market Cap:</div>
+                <div class="a asset-value" id="market-cap">--</div>
+              </div>
+              <div class="asset-row">
+                <div class="a asset-title asset-market-cap-change">
+                  Market Cap 24hr Change:
+                </div>
+                <div class="a asset-value" id="market-cap-24hr">--</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
