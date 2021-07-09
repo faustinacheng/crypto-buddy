@@ -283,10 +283,6 @@ ol.top-list {
   background-color: rgb(72, 72, 72);
 }
 
-/* .list-row {
-  /* margin: 0px 2%; */
-/* } */
-
 .list-rank {
   margin: 0% 1.5% 0% 0%;
   font-size: 110%;
@@ -304,7 +300,6 @@ ol.top-list {
   color: rgb(170, 170, 170);
   font-size: 85%;
   width: 22%;
-  /* border: 1px solid white; */
   text-align: start;
 }
 
@@ -379,4 +374,21 @@ ol.top-list {
 #error-image {
   position: absolute;
   top: 8%;
+}
+
+.list-credit {
+  font-size: 65%;
+  color: rgb(170, 170, 170);
+  position: absolute;
+  z-index: 22;
+  bottom: 2%;
+  right: 3%;
+}
+
+#credit-logo {
+  display: display-inside;
+  width: 80px;
+  margin-bottom: -5.6%;
+  margin-left: 6px;
+  opacity: 0.6;
 }
