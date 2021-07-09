@@ -353,6 +353,7 @@ ol.top-list {
   min-width: 4.1rem;
   text-align: start;
   font-size: 85%;
+  white-space: nowrap;
 }
 
 .change-7d {
@@ -361,6 +362,7 @@ ol.top-list {
   font-size: 85%;
   width: 4.1rem;
   min-width: 4.1rem;
+  white-space: nowrap;
 }
 
 .list-title {
