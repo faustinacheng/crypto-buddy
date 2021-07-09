@@ -55,9 +55,19 @@ async function get_trending() {
       let change24hr = ListData[0].price_change_percentage_24h_in_currency;
       let change7d = ListData[0].price_change_percentage_7d_in_currency;
 
-      listItems[i].innerHTML = `<div class="list-row list-rank">${
-        i + 1
-      }</div><img class="list-row list-icon" src=${image}/><div class="list-row list-symbol">${symbol}</div><div class="list-row list-name">${name}</div><div class="list-row list-price">${price}</div><div class="list-row change-24hr">${change24hr}</div><div class="list-row change-7d">${change7d}</div>`;
+      // listItems[i].innerHTML = `<div class="list-row list-rank">${
+      //   i + 1
+      // }</div><img class="list-row list-icon" src=${image}/><div class="list-row list-symbol">${symbol}</div><div class="list-row list-name">${name}</div><div class="list-row list-price">${price}</div><div class="list-row change-24hr">${change24hr}</div><div class="list-row change-7d">${change7d}</div>`;
+
+      listItems[i].innerHTML = `<div class="list-row list-rank">${i + 1}</div>
+      <img class="list-row list-icon" src="${image}" />
+      <div class="list-name-container">
+        <div class="list-row list-symbol">${symbol}</div>
+        <div class="list-row list-name">${name}</div>
+      </div>
+      <div class="list-row list-price">${price}</div>
+      <div class="list-row change-24hr">${change24hr}</div>
+      <div class="list-row change-7d">${change7d}</div>`;
 
       stylePosNeg(listItems[i].querySelector(".change-24hr"));
 
