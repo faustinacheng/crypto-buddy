@@ -30,10 +30,6 @@ body,
   flex-direction: row;
 }
 
-/* .flex-container > * {
-  flex: 1 100%;
-} */
-
 #background-vid {
   object-fit: cover;
   width: 55vw;
@@ -137,9 +133,9 @@ input {
   caret-color: rgb(54, 212, 54);
   color: rgb(54, 212, 54);
   width: 90%;
-  height: 2em;
+  height: 1.9em;
   border: none;
-  font-size: 1em;
+  font-size: 1.17rem;
   line-height: 2em;
   vertical-align: middle;
   font-family: "Exo 2";
@@ -148,7 +144,7 @@ input {
 input::-webkit-input-placeholder {
   line-height: 2em;
   height: 2em;
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 input:-webkit-autofill,
@@ -156,10 +152,12 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill::first-line,
 input:-webkit-autofill:active {
+  transition: "color 9999s ease-out, background-color 9999s ease-out";
   -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  transition-delay: 9999s;
   -webkit-transition-delay: 9999s;
   font-family: "Exo 2";
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 input:focus-visible {
@@ -294,10 +292,6 @@ ol.top-list {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-.list-row {
-  /* border: 1px solid white; */
 }
 
 .list-item:hover {
@@ -451,6 +445,40 @@ ol.top-list {
     min-width: 290px;
   }
 
+  input {
+    position: relative;
+    background-color: rgb(61, 61, 61);
+    cursor: text;
+    caret-color: rgb(54, 212, 54);
+    color: rgb(54, 212, 54);
+    width: 90%;
+    height: 1em;
+    border: none;
+    font-size: 1.26em;
+    line-height: 1em;
+    vertical-align: middle;
+    font-family: "Exo 2";
+  }
+
+  input::-webkit-input-placeholder {
+    line-height: 2em;
+    height: 2em;
+    font-size: 1.2em;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill::first-line,
+  input:-webkit-autofill:active {
+    transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    transition-delay: 9999s;
+    -webkit-transition-delay: 9999s;
+    font-family: "Exo 2";
+    font-size: 1.3rem;
+  }
+
   .results-container {
     min-width: 290px;
     min-height: 250px;
@@ -461,12 +489,12 @@ ol.top-list {
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 3.5vw;
   }
 
   lord-icon {
-    width: 80px;
-    height: 80px;
+    width: 10vw;
+    height: 10vw;
   }
 
   .list-main {
@@ -551,9 +579,15 @@ ol.top-list {
     box-shadow: 0px 3px 10px 2px rgba(10, 97, 25, 0.5);
   }
 
+  input::-webkit-input-placeholder {
+    line-height: 2em;
+    height: 2em;
+    font-size: 1em;
+  }
+
   input {
     height: 85%;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .list-gradient {
@@ -575,7 +609,6 @@ ol.top-list {
   }
 
   .list-row {
-    /* border: 1px solid white; */
     display: flex;
     align-items: center;
   }
@@ -600,7 +633,6 @@ ol.top-list {
     align-items: flex-start;
     width: 30%;
     min-width: 30%;
-    /* border: 1px solid red; */
     margin: 0% 1% 0% 0%;
   }
 

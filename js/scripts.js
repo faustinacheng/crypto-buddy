@@ -15,8 +15,6 @@ let resultsDisplay = document.getElementById("resultsDisplay");
 
 let numberFormat = new Intl.NumberFormat("en-US");
 
-// resultsDisplay.style.visibility = "hidden";
-
 // Code for Trending
 
 let listItems = document.getElementsByClassName("list-item");
@@ -54,10 +52,6 @@ async function get_trending() {
       });
       let change24hr = ListData[0].price_change_percentage_24h_in_currency;
       let change7d = ListData[0].price_change_percentage_7d_in_currency;
-
-      // listItems[i].innerHTML = `<div class="list-row list-rank">${
-      //   i + 1
-      // }</div><img class="list-row list-icon" src=${image}/><div class="list-row list-symbol">${symbol}</div><div class="list-row list-name">${name}</div><div class="list-row list-price">${price}</div><div class="list-row change-24hr">${change24hr}</div><div class="list-row change-7d">${change7d}</div>`;
 
       listItems[i].innerHTML = `<div class="list-row list-rank">${i + 1}</div>
       <img class="list-row list-icon" src="${image}" />
@@ -197,8 +191,6 @@ search_button.onclick = function () {
       stylePosNeg(document.querySelector("#price-24hr"));
       stylePosNeg(document.querySelector("#price-7d"));
       stylePosNeg(document.querySelector("#price-1h"));
-
-      // resultsDisplay.style.visibility = "visible";
     }
   }
   getData();
