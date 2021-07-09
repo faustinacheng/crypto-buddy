@@ -10,7 +10,7 @@ html,
 body,
 .viewport {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   margin: 0;
   font-family: "urw_dinregular";
   font-size: 16px;
@@ -19,14 +19,21 @@ body,
 .flex-container {
   width: 100%;
   height: 100vh;
-  display: flex;
-  /* flex: 1 100%; */
-  flex-direction: row;
+  display: inline-flex;
+  /* flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
   text-align: center;
   background: #000;
 }
+
+.flex-direction {
+  flex-direction: row;
+}
+
+/* .flex-container > * {
+  flex: 1 100%;
+} */
 
 #background-vid {
   object-fit: cover;
@@ -42,7 +49,6 @@ body,
   display: flex;
   position: relative;
   flex-direction: column;
-  flex: 1 1 100%;
   background: #000;
   width: 50%;
   min-width: 620px;
@@ -55,19 +61,19 @@ body,
 .background-gradient {
   position: absolute;
   width: 100vw;
+  min-width: 620px;
   height: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6));
 }
 
 .list-main {
   position: relative;
-  flex: 1 1 100%;
   background: rgb(61, 61, 61);
   color: #fff;
   width: 50vw;
   min-width: 500px;
   height: 100%;
-  border: 1px solid rgba(54, 212, 54, 0.3);
+  border-left: 1px solid rgba(54, 212, 54, 0.3);
   border-radius: 24px 0px 0px 24px;
   box-shadow: -5px 3px 0px 0px rgba(10, 97, 25, 0.5);
   display: flex;
@@ -95,6 +101,7 @@ h2 {
   text-transform: uppercase;
   align-self: flex-start;
   margin: 8% 0% 5% 4%;
+  z-index: 1;
 }
 
 .line {
@@ -139,7 +146,7 @@ input {
   width: 90%;
   height: 2em;
   border: none;
-  font-size: 16px;
+  font-size: 1em;
   line-height: 2em;
   vertical-align: middle;
   font-family: "Exo 2";
@@ -148,15 +155,18 @@ input {
 input::-webkit-input-placeholder {
   line-height: 2em;
   height: 2em;
-  font-size: 16px;
+  font-size: 1em;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
+input:-webkit-autofill::first-line,
 input:-webkit-autofill:active {
   -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
   -webkit-transition-delay: 9999s;
+  font-family: "Exo 2";
+  font-size: 1rem;
 }
 
 input:focus-visible {
@@ -403,4 +413,77 @@ ol.top-list {
   margin-bottom: -5.6%;
   margin-left: 6px;
   opacity: 0.6;
+}
+
+.list-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 500px) {
+  html,
+  body,
+  .viewport {
+    font-size: 12px;
+    min-width: 320px;
+    width: 100vw;
+  }
+
+  .flex-direction {
+    flex-direction: column;
+  }
+
+  .flex-container {
+    width: auto;
+    height: auto;
+    min-width: 320px;
+  }
+
+  #background-vid {
+    display: none;
+    min-width: 320px;
+  }
+
+  .background-gradient {
+    min-width: 320px;
+  }
+
+  .search-main {
+    width: 100vw;
+    height: 700px;
+    min-width: 320px;
+  }
+  .list-main {
+    width: 100vw;
+    min-width: 320px;
+    height: 700px;
+    /* border-top: 1px solid rgb(54, 212, 54); */
+    border-left: 0px;
+    border-radius: 0px;
+  }
+  .results-container {
+    box-shadow: 0px 3px 8px 3px rgba(10, 97, 25, 0.4);
+    width: 80%;
+    padding: 3% 0%;
+  }
+
+  .searchbar-container {
+    width: 80%;
+  }
+
+  .searchbar {
+    box-shadow: 0px 3px 10px 2px rgba(10, 97, 25, 0.5);
+  }
+
+  input {
+    height: 85%;
+    font-size: 1.4rem;
+  }
+
+  .list-gradient {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgb(61, 61, 61));
+    width: 100%;
+    height: 120px;
+  }
 }
