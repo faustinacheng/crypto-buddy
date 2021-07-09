@@ -144,7 +144,7 @@ input {
 input::-webkit-input-placeholder {
   line-height: 2em;
   height: 2em;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 input:-webkit-autofill,
@@ -465,7 +465,7 @@ ol.top-list {
   input::-webkit-input-placeholder {
     line-height: 2em;
     height: 2em;
-    font-size: 1.2em;
+    font-size: 1em;
   }
 
   input:-webkit-autofill,
