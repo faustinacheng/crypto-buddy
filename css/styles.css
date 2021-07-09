@@ -437,7 +437,52 @@ ol.top-list {
   left: 0;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1000px) {
+  html,
+  body,
+  .viewport {
+    font-size: 12px;
+  }
+
+  .flex-container {
+    min-height: 500px;
+  }
+  .searchbar-container {
+    min-width: 290px;
+  }
+
+  .results-container {
+    min-width: 290px;
+    min-height: 250px;
+  }
+
+  .asset-code {
+    font-size: 3em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  lord-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .list-main {
+    min-width: 380px;
+  }
+
+  .list-container {
+    min-width: 200px;
+  }
+
+  .list-gradient {
+    min-width: 200px;
+  }
+}
+
+@media screen and (max-width: 700px) {
   html,
   body,
   .viewport {
@@ -479,7 +524,7 @@ ol.top-list {
   }
 
   h1 {
-    font-size: 2.5em;
+    font-size: 8vw;
   }
 
   h2 {
@@ -487,8 +532,8 @@ ol.top-list {
   }
 
   lord-icon {
-    width: 80px;
-    height: 80px;
+    width: 20vw;
+    height: 20vw;
   }
   .results-container {
     box-shadow: 0px 3px 8px 3px rgba(10, 97, 25, 0.4);
@@ -498,6 +543,8 @@ ol.top-list {
 
   .searchbar-container {
     width: 80%;
+    margin-top: 20px;
+    margin-bottom: 40px;
   }
 
   .searchbar {
@@ -634,50 +681,5 @@ ol.top-list {
 
   .material-icons {
     margin: -9% -2% 0% 0%;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  html,
-  body,
-  .viewport {
-    font-size: 12px;
-  }
-
-  .flex-container {
-    min-height: 500px;
-  }
-  .searchbar-container {
-    min-width: 290px;
-  }
-
-  .results-container {
-    min-width: 290px;
-    min-height: 250px;
-  }
-
-  .asset-code {
-    font-size: 3em;
-  }
-
-  h1 {
-    font-size: 2em;
-  }
-
-  lord-icon {
-    width: 80px;
-    height: 80px;
-  }
-
-  .list-main {
-    min-width: 380px;
-  }
-
-  .list-container {
-    min-width: 200px;
-  }
-
-  .list-gradient {
-    min-width: 200px;
   }
 }
