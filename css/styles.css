@@ -112,11 +112,10 @@ h2 {
 #gorilla-container {
   position: fixed;
   /* overflow: hidden; */
-  width: 30%;
+  width: 15%;
   z-index: 2400;
-  left: 12%;
-  top: 42% !important;
-  opacity: 0.7;
+  left: 18%;
+  top: 40% !important;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
