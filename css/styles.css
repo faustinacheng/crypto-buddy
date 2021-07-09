@@ -76,7 +76,7 @@ body,
   align-items: flex-end;
 }
 
-lord-icon {
+#coin {
   margin-left: -3%;
   padding: 0px;
   width: 100px;
@@ -105,22 +105,13 @@ h2 {
   opacity: 0;
 }
 
-.a {
-  color: rgb(120, 120, 120);
+#duck {
+  position: absolute;
+  top: 0;
 }
 
-#gorilla-container {
-  position: fixed;
-  /* overflow: hidden; */
-  width: 15%;
-  z-index: 2400;
-  left: 18%;
-  top: 40% !important;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+.a {
+  color: rgb(120, 120, 120);
 }
 
 .searchbar-container {
@@ -340,7 +331,6 @@ ol.top-list {
   align-items: center;
   width: 37%;
   min-width: 37%;
-  /* border: 1px solid red; */
   margin: 0% 0% 0% 0%;
 }
 
@@ -516,7 +506,7 @@ ol.top-list {
     font-size: 3.5vw;
   }
 
-  lord-icon {
+  #coin {
     width: 10vw;
     height: 10vw;
   }
@@ -583,7 +573,7 @@ ol.top-list {
     font-size: 1.8em;
   }
 
-  lord-icon {
+  #coin {
     width: 20vw;
     height: 20vw;
   }
