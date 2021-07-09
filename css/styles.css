@@ -490,6 +490,10 @@ ol.top-list {
     font-size: 2.5em;
   }
 
+  h2 {
+    font-size: 1.8em;
+  }
+
   lord-icon {
     width: 80px;
     height: 80px;
@@ -533,10 +537,12 @@ ol.top-list {
 
   .list-row {
     /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
   }
 
   .list-rank {
-    margin: 0% 4% 0% 0%;
+    margin: 0% 2% 0% 0%;
     font-size: 120%;
   }
 
@@ -545,7 +551,7 @@ ol.top-list {
     min-width: 6%;
     border: 3px solid grey;
     border-radius: 50px;
-    margin: 1% 3% 1.5% 0%;
+    margin: 1% 1% 1.5% 0%;
   }
 
   .list-name-container {
@@ -632,5 +638,9 @@ ol.top-list {
     width: 4.3rem;
     min-width: 4.3rem;
     text-align: center;
+  }
+
+  .material-icons {
+    margin: -9% -2% 0% 0%;
   }
 }
