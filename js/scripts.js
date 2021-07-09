@@ -207,7 +207,7 @@ function stylePosNeg(element) {
 }
 
 function displaySearchError() {
-  resultsDisplay.innerHTML = `<lottie-player src="images/not_found_face.json" background="transparent"  speed="1"  style="width: 82%; height: 82%;" loop autoplay></lottie-player>
+  resultsDisplay.innerHTML = `<lottie-player id="error_image" src="images/not_found_face.json" background="transparent"  speed="1"  style="width: 82%; height: 82%;" loop autoplay></lottie-player>
   <div class="search-error">No results found.</div>
   `;
 }
