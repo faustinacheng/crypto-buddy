@@ -103,7 +103,6 @@ getCoinsList();
 
 async function getData(query, i) {
   let search_result = {};
-  console.log(query, i);
 
   if (i == 1) {
     search_result = symbolToID.find((coin) => {
@@ -113,11 +112,8 @@ async function getData(query, i) {
       );
     });
   } else if (i == 2) {
-    console.log(query);
     search_result.id = query;
   }
-
-  console.log(search_result);
 
   if (search_result == undefined) {
     displaySearchError();
