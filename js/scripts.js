@@ -56,7 +56,7 @@ async function get_trending() {
       listItems[i].innerHTML = `<div class="list-row list-rank">${i + 1}</div>
       <img class="list-row list-icon" src="${image}" />
       <div class="list-name-container">
-        <div class="list-row list-symbol">${symbol}</div>
+        <div class="list-row list-symbol" onClick="getData('${symbol}')">${symbol}</div>
         <div class="list-row list-name">${name}</div>
       </div>
       <div class="list-row list-price">${price}</div>
@@ -96,54 +96,55 @@ const getCoinsList = async () => {
 
 getCoinsList();
 
-search_button.onclick = function () {
-  async function getData() {
-    let search_result = symbolToID.find((coin) => {
-      return (
-        coin.symbol.toLowerCase() === search_data.value.toLowerCase() ||
-        coin.name.toLowerCase() === search_data.value.toLowerCase()
-      );
+// search_button.onclick = function () {
+
+async function getData(query) {
+  let search_result = symbolToID.find((coin) => {
+    return (
+      coin.symbol.toLowerCase() === query.toLowerCase() ||
+      coin.name.toLowerCase() === query.toLowerCase()
+    );
+  });
+
+  console.log(search_result);
+
+  if (search_result == undefined) {
+    displaySearchError();
+  }
+
+  let tosearch =
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" +
+    search_result.id +
+    "&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
+
+  const data = await fetch(tosearch);
+  const DATA = await data.json();
+
+  if (DATA.length == 0) {
+    displaySearchError();
+  } else {
+    let imageSrc = DATA[0].image
+      ? DATA[0].image
+      : "https://upload.wikimedia.org/wikipedia/commons/b/b4/Circle_question_mark.png";
+    let symbol = DATA[0].symbol.toUpperCase();
+    let name = DATA[0].name;
+    let price = DATA[0].current_price.toLocaleString("en-US", {
+      maximumSignificantDigits: 21,
     });
+    let marketCap = DATA[0].market_cap.toLocaleString("en-US", {
+      maximumSignificantDigits: 21,
+    });
+    let marketCap24h = DATA[0].market_cap_change_percentage_24h;
+    let highLow = `${DATA[0].high_24h.toLocaleString("en-US", {
+      maximumSignificantDigits: 8,
+    })} / ${DATA[0].low_24h.toLocaleString("en-US", {
+      maximumSignificantDigits: 8,
+    })}`;
+    let priceChange24hr = DATA[0].price_change_percentage_24h_in_currency;
+    let priceChange7d = DATA[0].price_change_percentage_7d_in_currency;
+    let priceChange1h = DATA[0].price_change_percentage_1h_in_currency;
 
-    console.log(search_result);
-
-    if (search_result == undefined) {
-      displaySearchError();
-    }
-
-    let tosearch =
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" +
-      search_result.id +
-      "&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
-
-    const data = await fetch(tosearch);
-    const DATA = await data.json();
-
-    if (DATA.length == 0) {
-      displaySearchError();
-    } else {
-      let imageSrc = DATA[0].image
-        ? DATA[0].image
-        : "https://upload.wikimedia.org/wikipedia/commons/b/b4/Circle_question_mark.png";
-      let symbol = DATA[0].symbol.toUpperCase();
-      let name = DATA[0].name;
-      let price = DATA[0].current_price.toLocaleString("en-US", {
-        maximumSignificantDigits: 21,
-      });
-      let marketCap = DATA[0].market_cap.toLocaleString("en-US", {
-        maximumSignificantDigits: 21,
-      });
-      let marketCap24h = DATA[0].market_cap_change_percentage_24h;
-      let highLow = `${DATA[0].high_24h.toLocaleString("en-US", {
-        maximumSignificantDigits: 8,
-      })} / ${DATA[0].low_24h.toLocaleString("en-US", {
-        maximumSignificantDigits: 8,
-      })}`;
-      let priceChange24hr = DATA[0].price_change_percentage_24h_in_currency;
-      let priceChange7d = DATA[0].price_change_percentage_7d_in_currency;
-      let priceChange1h = DATA[0].price_change_percentage_1h_in_currency;
-
-      resultsDisplay.innerHTML = `<div class="title-wrapper">
+    resultsDisplay.innerHTML = `<div class="title-wrapper">
       <img src=${imageSrc} id="cryptoImage" class="results-icon" />
       <div class="results-title-container">
         <div class="asset-code" id="id">${symbol}</div>
@@ -187,14 +188,12 @@ search_button.onclick = function () {
       </div>
       </div>`;
 
-      stylePosNeg(document.querySelector("#market-cap-24hr"));
-      stylePosNeg(document.querySelector("#price-24hr"));
-      stylePosNeg(document.querySelector("#price-7d"));
-      stylePosNeg(document.querySelector("#price-1h"));
-    }
+    stylePosNeg(document.querySelector("#market-cap-24hr"));
+    stylePosNeg(document.querySelector("#price-24hr"));
+    stylePosNeg(document.querySelector("#price-7d"));
+    stylePosNeg(document.querySelector("#price-1h"));
   }
-  getData();
-};
+}
 
 function stylePosNeg(element) {
   if (element.textContent < 0) {

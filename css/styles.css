@@ -351,6 +351,11 @@ ol.top-list {
   min-width: 32%;
 }
 
+.list-symbol:hover {
+  cursor: pointer;
+  color: rgb(54, 212, 54);
+}
+
 .list-price {
   margin: 0% 4% 0% 0%;
   font-size: 110%;
