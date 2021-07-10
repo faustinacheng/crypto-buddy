@@ -52,11 +52,14 @@ async function get_trending() {
       });
       let change24hr = ListData[0].price_change_percentage_24h_in_currency;
       let change7d = ListData[0].price_change_percentage_7d_in_currency;
+      let id = trendingCoins[i];
+
+      console.log(id);
 
       listItems[i].innerHTML = `<div class="list-row list-rank">${i + 1}</div>
       <img class="list-row list-icon" src="${image}" />
       <div class="list-name-container">
-        <div class="list-row list-symbol" onClick="getData('${symbol}')">${symbol}</div>
+        <div class="list-row list-symbol" onClick="getData('${id}', 2)">${symbol}</div>
         <div class="list-row list-name">${name}</div>
       </div>
       <div class="list-row list-price">${price}</div>
@@ -98,13 +101,21 @@ getCoinsList();
 
 // search_button.onclick = function () {
 
-async function getData(query) {
-  let search_result = symbolToID.find((coin) => {
-    return (
-      coin.symbol.toLowerCase() === query.toLowerCase() ||
-      coin.name.toLowerCase() === query.toLowerCase()
-    );
-  });
+async function getData(query, i) {
+  let search_result = {};
+  console.log(query, i);
+
+  if (i == 1) {
+    search_result = symbolToID.find((coin) => {
+      return (
+        coin.symbol.toLowerCase() === query.toLowerCase() ||
+        coin.name.toLowerCase() === query.toLowerCase()
+      );
+    });
+  } else if (i == 2) {
+    console.log(query);
+    search_result.id = query;
+  }
 
   console.log(search_result);
 
