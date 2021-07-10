@@ -146,17 +146,17 @@ input {
   caret-color: rgb(54, 212, 54);
   color: rgb(54, 212, 54);
   width: 90%;
-  height: 1.9em;
+  height: 1.5em;
   border: none;
   font-size: 1.17rem;
-  line-height: 2em;
+  line-height: 1.5em;
   vertical-align: middle;
   font-family: "Exo 2";
 }
 
 input::-webkit-input-placeholder {
-  line-height: 2em;
-  height: 2em;
+  line-height: 1.8em;
+  height: 1.8em;
   font-size: 1em;
 }
 
@@ -173,6 +173,10 @@ input:-webkit-autofill:active {
   font-size: 1.2rem;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
 input:focus-visible {
   outline: none;
 }
