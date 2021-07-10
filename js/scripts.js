@@ -115,6 +115,8 @@ async function getData(query, i) {
     search_result.id = query;
   }
 
+  console.log(search_result);
+
   if (search_result == undefined) {
     displaySearchError();
   }
