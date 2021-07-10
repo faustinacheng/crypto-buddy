@@ -33,7 +33,6 @@ body,
 #background-vid {
   object-fit: cover;
   width: 55vw;
-  /* min-width: 620px; */
   height: 100%;
   position: absolute;
   top: 0;
@@ -42,11 +41,9 @@ body,
 
 .search-main {
   display: flex;
-  /* position: relative; */
   flex-direction: column;
   background: #000;
   width: 50%;
-  /* min-width: 620px; */
   height: 100%;
   color: #fff;
   align-items: center;
@@ -56,7 +53,6 @@ body,
 .background-gradient {
   position: absolute;
   width: 100vw;
-  /* min-width: 620px; */
   height: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6));
 }
@@ -99,10 +95,6 @@ h2 {
   align-self: flex-start;
   margin: 8% 0% 5% 4%;
   z-index: 1;
-}
-
-#landing-image {
-  opacity: 0;
 }
 
 #duck {
