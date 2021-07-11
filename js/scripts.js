@@ -1,23 +1,26 @@
-let search_button = document.getElementById("button");
-let search_data = document.getElementById("search_data");
-let searchSYM = document.getElementById("id");
-let searchNAME = document.getElementById("name");
-let currentPrice = document.getElementById("current-price");
-let marketCap = document.getElementById("market-cap");
-let marketCap24hr = document.getElementById("market-cap-24hr");
-let high24hr = document.getElementById("high-24hr");
-let low24hr = document.getElementById("low-24hr");
-let price24hr = document.getElementById("price-24hr");
-let price7d = document.getElementById("price-7d");
-let price1h = document.getElementById("price-1h");
-let cryptoImage = document.getElementById("cryptoImage");
-let resultsDisplay = document.getElementById("resultsDisplay");
+const search_button = document.getElementById("button");
+const searchWrapper = document.querySelector(".search-wrapper");
+const searchBar = document.querySelector(".searchbar");
+const search_data = document.getElementById("search_data");
+const searchAutoResults = document.getElementById("searchAutoResults");
+const searchSYM = document.getElementById("id");
+const searchNAME = document.getElementById("name");
+const currentPrice = document.getElementById("current-price");
+const marketCap = document.getElementById("market-cap");
+const marketCap24hr = document.getElementById("market-cap-24hr");
+const high24hr = document.getElementById("high-24hr");
+const low24hr = document.getElementById("low-24hr");
+const price24hr = document.getElementById("price-24hr");
+const price7d = document.getElementById("price-7d");
+const price1h = document.getElementById("price-1h");
+const cryptoImage = document.getElementById("cryptoImage");
+const resultsDisplay = document.getElementById("resultsDisplay");
 
-let numberFormat = new Intl.NumberFormat("en-US");
+const numberFormat = new Intl.NumberFormat("en-US");
 
 // Code for Trending
 
-let listItems = document.getElementsByClassName("list-item");
+const listItems = document.getElementsByClassName("list-item");
 
 async function get_trending() {
   let search = "https://api.coingecko.com/api/v3/search/trending";
@@ -53,8 +56,6 @@ async function get_trending() {
       let change24hr = ListData[0].price_change_percentage_24h_in_currency;
       let change7d = ListData[0].price_change_percentage_7d_in_currency;
       let id = trendingCoins[i];
-
-      console.log(id);
 
       listItems[i].innerHTML = `<div class="list-row list-rank">${i + 1}</div>
       <img class="list-row list-icon" src="${image}" />
@@ -99,7 +100,168 @@ const getCoinsList = async () => {
 
 getCoinsList();
 
-// search_button.onclick = function () {
+// const searchCoins = (searchText) => {
+//   console.log("C" + symbolToID);
+// let matches = symbolToID.filter((coin) => {
+//   const regex = new RegExp(`^${searchText}`, "gi");
+//   return coin.name.match(regex) || coin.symbol.match(regex);
+// });
+
+// if (search_data.value.length === 0) {
+//   searchBar.style.borderBottomRightRadius = "24px";
+//   searchBar.style.borderBottomLeftRadius = "24px";
+//   matches = [];
+//   searchAutoResults.innerHTML = "";
+// }
+
+// console.log(matches);
+
+// outputHtml(matches);
+// };
+
+// search_data.addEventListener("input", () => {
+//   searchCoins(search_data.value);
+// });
+
+// const outputHtml = (matches) => {
+//   console.log("B" + symbolToID);
+//   if (matches.length > 0) {
+//     const html = matches
+//       .map(
+//         (match) => `
+//     <div class="autocomplete-entry">
+//       <span class="autocomplete-symbol">${match.symbol}</span> <span class="autocomplete-name">${match.name}</span>
+//     </div>
+//     `
+//       )
+//       .join("");
+
+//     searchAutoResults.innerHTML = html;
+//     searchBar.style.borderBottomRightRadius = "0px";
+//     searchBar.style.borderBottomLeftRadius = "0px";
+//   }
+// };
+
+let currentFocus;
+
+search_data.addEventListener("input", (e) => {
+  // searchCoins(search_data.value);
+  var a,
+    b,
+    i,
+    val = search_data.value;
+  /*close any already open lists of autocompleted values*/
+  closeAllLists();
+  if (!val) {
+    return false;
+  }
+  currentFocus = -1;
+  /*create a DIV element that will contain the items (values):*/
+  a = document.createElement("DIV");
+  a.setAttribute("id", "search_data" + "autocomplete-list");
+  a.setAttribute("class", "autocomplete-items");
+  /*append the DIV element as a child of the autocomplete container:*/
+  searchWrapper.appendChild(a);
+  /*for each item in the array...*/
+
+  for (i = 0; i < symbolToID.length; i++) {
+    /*check if the item starts with the same letters as the text field value:*/
+    if (
+      symbolToID[i].name.substr(0, val.length).toUpperCase() ==
+        val.toUpperCase() ||
+      symbolToID[i].symbol.substr(0, val.length).toUpperCase() ==
+        val.toUpperCase()
+    ) {
+      /*create a DIV element for each matching element:*/
+      searchBar.style.borderBottomRightRadius = "0px";
+      searchBar.style.borderBottomLeftRadius = "0px";
+      b = document.createElement("DIV");
+      b.setAttribute("onClick", `getData('${symbolToID[i].id}', 2)`);
+      b.innerHTML = `
+        <span class="autocomplete-symbol">${symbolToID[i].symbol}</span> <span class="autocomplete-name">${symbolToID[i].name}</span>
+        `;
+      /*insert a input field that will hold the current array item's value:*/
+      b.innerHTML +=
+        "<input type='hidden' value='" +
+        symbolToID[i].symbol.toUpperCase() +
+        "'>";
+
+      /*execute a function when someone clicks on the item value (DIV element):*/
+      b.addEventListener("click", function (e) {
+        /*insert the value for the autocomplete text field:*/
+        search_data.value = this.getElementsByTagName("input")[0].value;
+
+        /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+        closeAllLists();
+      });
+      a.appendChild(b);
+    }
+  }
+});
+
+search_data.addEventListener("keydown", function (e) {
+  var x = document.getElementById(this.id + "autocomplete-list");
+  if (x) x = x.getElementsByTagName("div");
+  if ("Escape" === e.key) {
+    closeAllLists();
+  }
+  // if (e.keyCode == 40) {
+  //   /*If the arrow DOWN key is pressed,
+  //     increase the currentFocus variable:*/
+  //   currentFocus++;
+  //   /*and and make the current item more visible:*/
+  //   addActive(x);
+  // } else if (e.keyCode == 38) {
+  //   //up
+  //   /*If the arrow UP key is pressed,
+  //     decrease the currentFocus variable:*/
+  //   currentFocus--;
+  //   /*and and make the current item more visible:*/
+  //   addActive(x);
+  // } else if (e.keyCode == 13) {
+  //   /*If the ENTER key is pressed, prevent the form from being submitted,*/
+  //   // e.preventDefault();
+  //   if (currentFocus > -1) {
+  //     /*and simulate a click on the "active" item:*/
+  //     if (x) x[currentFocus].click();
+  //   }
+  // }
+});
+function addActive(x) {
+  /*a function to classify an item as "active":*/
+  if (!x) return false;
+  /*start by removing the "active" class on all items:*/
+  removeActive(x);
+  if (currentFocus >= x.length) currentFocus = 0;
+  if (currentFocus < 0) currentFocus = x.length - 1;
+  /*add class "autocomplete-active":*/
+  x[currentFocus].classList.add("autocomplete-active");
+}
+function removeActive(x) {
+  /*a function to remove the "active" class from all autocomplete items:*/
+  for (var i = 0; i < x.length; i++) {
+    x[i].classList.remove("autocomplete-active");
+  }
+}
+function closeAllLists(elmnt) {
+  /*close all autocomplete lists in the document,
+  except the one passed as an argument:*/
+  var x = document.getElementsByClassName("autocomplete-items");
+  for (var i = 0; i < x.length; i++) {
+    if (elmnt != x[i] && elmnt != search_data) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+  searchBar.style.borderBottomRightRadius = "24px";
+  searchBar.style.borderBottomLeftRadius = "24px";
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+  closeAllLists(e.target);
+});
+
+////////////////////
 
 async function getData(query, i) {
   let search_result = {};

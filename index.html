@@ -77,26 +77,32 @@
           </lord-icon>
           Crypto Buddy
         </h1>
-        <div class="searchbar-container">
-          <div class="searchbar">
-            <input
-              type="text"
-              class="searchinput"
-              id="search_data"
-              name="search_data"
-              placeholder="Enter crypto name or symbol"
-              autofocus
-            />
+        <div class="search-wrapper">
+          <div class="searchbar-container">
+            <div class="searchbar">
+              <input
+                type="text"
+                class="searchinput"
+                id="search_data"
+                name="search_data"
+                placeholder="Enter crypto name or symbol"
+                autofocus
+                spellcheck="false"
+                autocomplete="off"
+              />
+            </div>
+            <button
+              class="searchbar-submit"
+              id="button"
+              type="submit"
+              onClick="getData(search_data.value, 1)"
+            >
+              Search
+            </button>
           </div>
-          <button
-            class="searchbar-submit"
-            id="button"
-            type="submit"
-            onClick="getData(search_data.value, 1)"
-          >
-            Search
-          </button>
+          <div id="searchAutoResults" class="search-autocomplete"></div>
         </div>
+
         <div class="results-container">
           <div class="results-inner" id="resultsDisplay">
             <lord-icon
