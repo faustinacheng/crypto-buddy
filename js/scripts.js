@@ -97,17 +97,11 @@ const getCoinsList = async () => {
     coins_json.sort(dynamicSort("symbol"));
 
     symbolToID = coins_json;
-    console.log(symbolToID);
   });
 };
 
-/**
- * Function to sort alphabetically an array of objects by some specific key.
- *
- * @param {String} property Key of the object to sort.
- */
 function dynamicSort(property) {
-  var sortOrder = 1;
+  let sortOrder = 1;
 
   if (property[0] === "-") {
     sortOrder = -1;
@@ -165,68 +159,69 @@ getCoinsList();
 //     searchBar.style.borderBottomRightRadius = "0px";
 //     searchBar.style.borderBottomLeftRadius = "0px";
 //   }
-// };
+// };`
 
 let currentFocus;
 
 search_data.addEventListener("input", (e) => {
-  // searchCoins(search_data.value);
-  var a,
+  let a,
     b,
     i,
     val = search_data.value;
-  /*close any already open lists of autocompleted values*/
   closeAllLists();
   if (!val) {
     return false;
   }
-  currentFocus = -1;
-  /*create a DIV element that will contain the items (values):*/
+  // currentFocus = -1;
+
   a = document.createElement("DIV");
   a.setAttribute("id", "search_data" + "autocomplete-list");
   a.setAttribute("class", "autocomplete-items");
-  /*append the DIV element as a child of the autocomplete container:*/
+
   searchWrapper.appendChild(a);
-  /*for each item in the array...*/
 
-  for (i = 0; i < symbolToID.length; i++) {
-    /*check if the item starts with the same letters as the text field value:*/
-    if (
-      symbolToID[i].name.substr(0, val.length).toUpperCase() ==
-        val.toUpperCase() ||
-      symbolToID[i].symbol.substr(0, val.length).toUpperCase() ==
-        val.toUpperCase()
-    ) {
-      /*create a DIV element for each matching element:*/
-      searchBar.style.borderBottomRightRadius = "0px";
-      searchBar.style.borderBottomLeftRadius = "0px";
-      b = document.createElement("DIV");
-      b.setAttribute("onClick", `getData('${symbolToID[i].id}', 2)`);
-      b.innerHTML = `
-        <span class="autocomplete-symbol">${symbolToID[i].symbol}</span> <span class="autocomplete-name">${symbolToID[i].name}</span>
+  let rankedIndex = symbolToID
+    .map((entry) => {
+      let points = 0;
+      const regexExact = new RegExp(`^${val}$`, "gi");
+      const regex = new RegExp(`^${val}`, "gi");
+
+      if (entry.name.match(regexExact) || entry.symbol.match(regexExact)) {
+        points += 2;
+      } else if (entry.name.match(regex) || entry.symbol.match(regex)) {
+        points += 1;
+      }
+
+      return { ...entry, points };
+    })
+    .sort((a, b) => b.points - a.points)
+    .filter((entry) => entry.points > 0);
+
+  for (i = 0; i < rankedIndex.length; i++) {
+    searchBar.style.borderBottomRightRadius = "0px";
+    searchBar.style.borderBottomLeftRadius = "0px";
+    b = document.createElement("DIV");
+    b.setAttribute("onClick", `getData('${rankedIndex[i].id}', 2)`);
+    b.innerHTML = `
+        <span class="autocomplete-symbol">${rankedIndex[i].symbol}</span> <span class="autocomplete-name">${rankedIndex[i].name}</span>
         `;
-      /*insert a input field that will hold the current array item's value:*/
-      b.innerHTML +=
-        "<input type='hidden' value='" +
-        symbolToID[i].symbol.toUpperCase() +
-        "'>";
 
-      /*execute a function when someone clicks on the item value (DIV element):*/
-      b.addEventListener("click", function (e) {
-        /*insert the value for the autocomplete text field:*/
-        search_data.value = this.getElementsByTagName("input")[0].value;
+    b.innerHTML +=
+      "<input type='hidden' value='" +
+      rankedIndex[i].symbol.toUpperCase() +
+      "'>";
 
-        /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
-        closeAllLists();
-      });
-      a.appendChild(b);
-    }
+    b.addEventListener("click", function (e) {
+      search_data.value = this.getElementsByTagName("input")[0].value;
+
+      closeAllLists();
+    });
+    a.appendChild(b);
   }
 });
 
 search_data.addEventListener("keydown", function (e) {
-  var x = document.getElementById(this.id + "autocomplete-list");
+  let x = document.getElementById(this.id + "autocomplete-list");
   if (x) x = x.getElementsByTagName("div");
   if ("Escape" === e.key) {
     closeAllLists();
@@ -253,27 +248,25 @@ search_data.addEventListener("keydown", function (e) {
   //   }
   // }
 });
-function addActive(x) {
-  /*a function to classify an item as "active":*/
-  if (!x) return false;
-  /*start by removing the "active" class on all items:*/
-  removeActive(x);
-  if (currentFocus >= x.length) currentFocus = 0;
-  if (currentFocus < 0) currentFocus = x.length - 1;
-  /*add class "autocomplete-active":*/
-  x[currentFocus].classList.add("autocomplete-active");
-}
-function removeActive(x) {
-  /*a function to remove the "active" class from all autocomplete items:*/
-  for (var i = 0; i < x.length; i++) {
-    x[i].classList.remove("autocomplete-active");
-  }
-}
+// function addActive(x) {
+//   /*a function to classify an item as "active":*/
+//   if (!x) return false;
+//   /*start by removing the "active" class on all items:*/
+//   removeActive(x);
+//   if (currentFocus >= x.length) currentFocus = 0;
+//   if (currentFocus < 0) currentFocus = x.length - 1;
+//   /*add class "autocomplete-active":*/
+//   x[currentFocus].classList.add("autocomplete-active");
+// }
+// function removeActive(x) {
+//   /*a function to remove the "active" class from all autocomplete items:*/
+//   for (let i = 0; i < x.length; i++) {
+//     x[i].classList.remove("autocomplete-active");
+//   }
+// }
 function closeAllLists(elmnt) {
-  /*close all autocomplete lists in the document,
-  except the one passed as an argument:*/
-  var x = document.getElementsByClassName("autocomplete-items");
-  for (var i = 0; i < x.length; i++) {
+  const x = document.getElementsByClassName("autocomplete-items");
+  for (let i = 0; i < x.length; i++) {
     if (elmnt != x[i] && elmnt != search_data) {
       x[i].parentNode.removeChild(x[i]);
       searchBar.style.borderBottomRightRadius = "1.25em";
@@ -281,12 +274,10 @@ function closeAllLists(elmnt) {
     }
   }
 }
-/*execute a function when someone clicks in the document:*/
+
 document.addEventListener("click", function (e) {
   closeAllLists(e.target);
 });
-
-////////////////////
 
 async function getData(query, i) {
   let search_result = {};
