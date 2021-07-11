@@ -253,8 +253,8 @@ function closeAllLists(elmnt) {
       x[i].parentNode.removeChild(x[i]);
     }
   }
-  searchBar.style.borderBottomRightRadius = "24px";
-  searchBar.style.borderBottomLeftRadius = "24px";
+  searchBar.style.borderBottomRightRadius = "1.25em";
+  searchBar.style.borderBottomLeftRadius = "1.25em";
 }
 /*execute a function when someone clicks in the document:*/
 document.addEventListener("click", function (e) {
