@@ -531,6 +531,10 @@ ol.top-list {
   left: 0;
 }
 
+.not-available {
+  color: rgb(120, 120, 120);
+}
+
 @media screen and (max-width: 1000px) {
   html,
   body,

@@ -306,30 +306,45 @@ async function getData(query, i) {
 
   const data = await fetch(tosearch);
   const DATA = await data.json();
+  const na = `
+  <span class="not-available">N/A</span>
+  `;
 
   if (DATA.length == 0) {
     displaySearchError();
   } else {
-    let imageSrc = DATA[0].image
-      ? DATA[0].image
-      : "https://upload.wikimedia.org/wikipedia/commons/b/b4/Circle_question_mark.png";
+    let imageSrc = "";
+    if (DATA[0].image !== "missing_large.png") {
+      imageSrc = DATA[0].image;
+    } else {
+      imageSrc =
+        "https://upload.wikimedia.org/wikipedia/commons/b/b4/Circle_question_mark.png";
+    }
     let symbol = DATA[0].symbol.toUpperCase();
     let name = DATA[0].name;
-    let price = DATA[0].current_price.toLocaleString("en-US", {
-      maximumSignificantDigits: 21,
-    });
+    let price = DATA[0].current_price
+      ? DATA[0].current_price.toLocaleString("en-US", {
+          maximumSignificantDigits: 21,
+        })
+      : na;
     let marketCap = DATA[0].market_cap.toLocaleString("en-US", {
       maximumSignificantDigits: 21,
     });
-    let marketCap24h = DATA[0].market_cap_change_percentage_24h;
-    let highLow = `${DATA[0].high_24h.toLocaleString("en-US", {
-      maximumSignificantDigits: 8,
-    })} / ${DATA[0].low_24h.toLocaleString("en-US", {
-      maximumSignificantDigits: 8,
-    })}`;
-    let priceChange24hr = DATA[0].price_change_percentage_24h_in_currency;
-    let priceChange7d = DATA[0].price_change_percentage_7d_in_currency;
-    let priceChange1h = DATA[0].price_change_percentage_1h_in_currency;
+    let marketCap24h = DATA[0].market_cap_change_percentage_24h ?? na;
+    let high24hr = DATA[0].high_24h
+      ? DATA[0].high_24h.toLocaleString("en-US", {
+          maximumSignificantDigits: 8,
+        })
+      : na;
+    let low24hr = DATA[0].low_24h
+      ? DATA[0].low_24h.toLocaleString("en-US", {
+          maximumSignificantDigits: 8,
+        })
+      : na;
+    let highLow = `${high24hr} / ${low24hr}`;
+    let priceChange24hr = DATA[0].price_change_percentage_24h_in_currency ?? na;
+    let priceChange7d = DATA[0].price_change_percentage_7d_in_currency ?? na;
+    let priceChange1h = DATA[0].price_change_percentage_1h_in_currency ?? na;
 
     resultsDisplay.innerHTML = `<div class="title-wrapper">
       <img src=${imageSrc} id="cryptoImage" class="results-icon" />
@@ -375,10 +390,21 @@ async function getData(query, i) {
       </div>
       </div>`;
 
-    stylePosNeg(document.querySelector("#market-cap-24hr"));
-    stylePosNeg(document.querySelector("#price-24hr"));
-    stylePosNeg(document.querySelector("#price-7d"));
-    stylePosNeg(document.querySelector("#price-1h"));
+    if (typeof marketCap24h === "number") {
+      stylePosNeg(document.querySelector("#market-cap-24hr"));
+    }
+
+    if (typeof priceChange24hr === "number") {
+      stylePosNeg(document.querySelector("#price-24hr"));
+    }
+
+    if (typeof priceChange7d === "number") {
+      stylePosNeg(document.querySelector("#price-7d"));
+    }
+
+    if (typeof priceChange1h === "number") {
+      stylePosNeg(document.querySelector("#price-1h"));
+    }
   }
 }
 
