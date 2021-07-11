@@ -94,9 +94,34 @@ let symbolToID = [];
 const getCoinsList = async () => {
   const response = await fetch(coinsListSearch);
   response.json().then((coins_json) => {
+    coins_json.sort(dynamicSort("symbol"));
+
     symbolToID = coins_json;
+    console.log(symbolToID);
   });
 };
+
+/**
+ * Function to sort alphabetically an array of objects by some specific key.
+ *
+ * @param {String} property Key of the object to sort.
+ */
+function dynamicSort(property) {
+  var sortOrder = 1;
+
+  if (property[0] === "-") {
+    sortOrder = -1;
+    property = property.substr(1);
+  }
+
+  return function (a, b) {
+    if (sortOrder == -1) {
+      return b[property].localeCompare(a[property]);
+    } else {
+      return a[property].localeCompare(b[property]);
+    }
+  };
+}
 
 getCoinsList();
 
@@ -251,10 +276,10 @@ function closeAllLists(elmnt) {
   for (var i = 0; i < x.length; i++) {
     if (elmnt != x[i] && elmnt != search_data) {
       x[i].parentNode.removeChild(x[i]);
+      searchBar.style.borderBottomRightRadius = "1.25em";
+      searchBar.style.borderBottomLeftRadius = "1.25em";
     }
   }
-  searchBar.style.borderBottomRightRadius = "1.25em";
-  searchBar.style.borderBottomLeftRadius = "1.25em";
 }
 /*execute a function when someone clicks in the document:*/
 document.addEventListener("click", function (e) {
