@@ -6,11 +6,7 @@
   font-style: normal;
 }
 
-html,
-body,
-.viewport {
-  width: 100%;
-  margin: 0;
+body {
   font-family: "urw_dinregular";
   font-size: 16px;
 }
@@ -93,7 +89,7 @@ h2 {
   font-size: 1.5em;
   text-transform: uppercase;
   align-self: flex-start;
-  margin: 8% 0% 5% 4%;
+  margin: 8% 0% 5% 9%;
   z-index: 1;
 }
 
@@ -384,7 +380,7 @@ ol.top-list {
   list-style-position: inside;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -438,7 +434,7 @@ ol.top-list {
 }
 
 .list-price {
-  margin: 0% 4% 0% 0%;
+  margin: 0% 5% 0% 0%;
   font-size: 110%;
   text-align: start;
   width: 16%;
@@ -446,9 +442,9 @@ ol.top-list {
 }
 
 .change-24hr {
-  margin: 0% 2% 0% 0%;
-  width: 4.1rem;
-  min-width: 4.1rem;
+  margin: 0% 3% 0% 0%;
+  width: 9%;
+  min-width: 9%;
   text-align: start;
   font-size: 85%;
   white-space: nowrap;
@@ -458,8 +454,8 @@ ol.top-list {
   margin: 0% 0% 0% 0%;
   text-align: start;
   font-size: 85%;
-  width: 4.1rem;
-  min-width: 4.1rem;
+  width: 9%;
+  min-width: 9%;
   white-space: nowrap;
 }
 
@@ -470,28 +466,32 @@ ol.top-list {
   font-size: 70%;
   text-align: start;
   width: 93%;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .title-coin {
-  margin: 0% 6% 0% 0%;
-  width: 44%;
+  margin: 0% 2% 0% 0%;
+  width: 43%;
+  min-width: 43%;
 }
 
 .title-price {
   width: 16%;
-  margin: 0% 4% 0% 0%;
+  min-width: 16%;
+  margin: 0% 5% 0% 0%;
 }
 
 .title-24hr {
-  margin: 0% 2% 0% 0%;
-  width: 4.1rem;
-  min-width: 4.1rem;
+  margin: 0% 3% 0% 0%;
+  width: 9%;
+  min-width: 9%;
+  white-space: nowrap;
 }
 
 .title-7d {
-  width: 4.1rem;
-  min-width: 4.1rem;
+  width: 9%;
+  min-width: 9%;
+  white-space: nowrap;
 }
 
 .material-icons {
@@ -661,6 +661,7 @@ ol.top-list {
 
   h2 {
     font-size: 1.8em;
+    margin: 8% 0% 5% 4%;
   }
 
   #coin {
