@@ -19,7 +19,7 @@ Built with HTML/CSS/JavaScript with data provided by the CoinGecko API. Mockup d
 <BR><BR>
 <h2><b>Ending Thoughts:</b></h2>
 <BR>
-There are a couple of features that I would like to add in the future, such as a drop down autocomplete list of cryptocurrencies as the user types in the search bar, more lists such as highest percentage growth in a day, and sorting of lists by columns.
+There are a couple of features that I would like to add in the future, such as more lists such as highest percentage growth in a day, and sorting of lists by columns.
 <BR><BR>
 <HR>
 <H2><B>Contributors:</B></H2>
